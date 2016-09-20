@@ -5,7 +5,7 @@ class Display
 
   attr_accessor :cursor
 
-  DISPLAYS = {
+  @@displays = {
     :knight => " N ",
     :pawn => " p ",
     :queen => " Q ",

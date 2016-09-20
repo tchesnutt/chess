@@ -1,5 +1,7 @@
 class Piece
-  require_relative 'board'
+
+
+  attr_reader :piece, :color, :pos
 
   DISPLAYS = {
     :knight => " N ",
@@ -12,7 +14,7 @@ class Piece
 
   def initialize(color, piece, pos)
     @color = color
-    @piece = peice
+    @piece = piece
     @pos = pos
   end
 
@@ -22,7 +24,6 @@ class Piece
   end
 
   def valid_moves()
-
   end
 
   def empty?
