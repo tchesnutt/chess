@@ -1,4 +1,5 @@
 require_relative 'piece'
+require_relative 'board'
 
 module Slideable
 
@@ -47,34 +48,4 @@ module Slideable
   def out_of_bounds?
     self.any? { |coordinate| coordinate > 7 || coordinate < 0 }
   end
-end
-
-class Rook < Piece
-  include Slideable
-
-  def initialize(color, piece = :rook, pos)
-    super(color, piece, pos)
-    @piece = piece
-  end
-
-end
-
-class Bishop < Piece
-  include Slideable
-
-  def initialize(color, piece = :bishop, pos)
-    super(color, piece, pos)
-    @piece = piece
-  end
-
-end
-
-class Queen < Piece
-  include Slideable
-
-  def initialize(color, piece = :queen, pos)
-    super(color, piece, pos)
-    @piece = piece
-  end
-
 end

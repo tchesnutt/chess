@@ -1,6 +1,5 @@
 class Piece
 
-
   attr_reader :piece, :color, :pos
 
   DISPLAYS = {
@@ -12,9 +11,9 @@ class Piece
     :rook => " R "
   }
 
-  def initialize(color, piece, pos)
+  def initialize(color, pos)
     @color = color
-    @piece = piece
+    # @piece = piece
     @pos = pos
   end
 

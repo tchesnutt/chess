@@ -1,7 +1,8 @@
+require 'colorize'
+require_relative 'cursor'
+require_relative 'board'
+
 class Display
-  require 'colorize'
-  require_relative 'cursor'
-  require_relative 'board'
 
   attr_accessor :cursor
 
@@ -24,13 +25,19 @@ class Display
     puts @cursor.cursor_pos
     rendering = @board.board.map.with_index do |row, i|
       row2 = row.map.with_index do |pos, j|
+        # if pos.piece
+        #   pos = @@displays[pos.piece]
+        # end
+
+
+
         case [i, j]
         when @cursor.cursor_pos
-          pos = " X "
           pos.colorize(:background => :red)
         else
           pos = "__"
         end
+
       end
 
       str = ""
