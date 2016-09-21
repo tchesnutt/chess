@@ -1,10 +1,10 @@
 require_relative 'piece'
 
 class Rook < Piece
-  include Slideable
+  include Slidable
 
   def initialize(color, piece = :rook, pos)
-    super(color, piece, pos)
+    super(color, pos)
     @piece = piece
   end
 

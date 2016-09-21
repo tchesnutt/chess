@@ -18,7 +18,7 @@ class Piece
   end
 
   def to_s
-    str = DISPLAYS[self.symbol]
+    str = DISPLAYS[self.piece]
     self.color == :white ? str.colorize(:white) : str.colorize(:gray)
   end
 

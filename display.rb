@@ -21,44 +21,45 @@ class Display
   end
 
   def render
-    # system('clear')
-    puts @cursor.cursor_pos
-    rendering = @board.board.map.with_index do |row, i|
-      row2 = row.map.with_index do |pos, j|
-        # if pos.piece
-        #   pos = @@displays[pos.piece]
-        # end
+    system('clear')
+    # puts @cursor.cursor_pos
+    rendering = []
+    @board.board.map.with_index do |row, i|
+      row2 = []
+      row.map.with_index do |pos, j|
+        if pos.class != NullPiece
+          str = @@displays[pos.piece]
+          if pos.color == :white
+            row2 << str.white
+          elsif pos.color == :black
+            row2 << str.red
+          end
+        else
+          row2 << "   "
+        end
 
-
+        case i.even?
+        when true
+          row2[j] = row2[j].colorize(:background => :light_yellow) if j.even?
+        when false
+          row2[j] = row2[j].colorize(:background => :light_yellow) if j.odd?
+        end
 
         case [i, j]
         when @cursor.cursor_pos
-          pos.colorize(:background => :red)
-        else
-          pos = "__"
+          row2[j] = row2[j].colorize(:background => :blue)
         end
-
       end
-
-      str = ""
-      row2.each do |val|
-        str << val
-      end
-      puts str
-
+      rendering << row2.join("")
     end
-    # puts rendering.each
-    # {|row| puts "#{row}\n"}
+    rendering.each { |row| puts row }
   end
 
-  # def render00
-  #   # @board.board[0][0] = " X "
-  #   @board.board[0][0].colorize(:background => :red)
-  #   p @board
-  # end
 end
 
-board = Display.new(Board.new)
-board.render
-board.cursor.get_input
-board.render
+board = Board.new
+display = Display.new(board)
+p board
+display.render
+display.cursor.get_input
+display.render

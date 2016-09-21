@@ -1,11 +1,11 @@
 require_relative 'piece'
 require_relative 'board'
 
-module Slideable
+module Slidable
 
   def moves(start_pos)
     possible_moves = []
-    case self.symbol
+    case self.piece
     when :rook
       possible_moves + horizontal(start_pos)
     when :bishop
@@ -20,7 +20,7 @@ module Slideable
     directions = [[0,1], [1,0], [-1,0], [0,-1]]
     result = []
     directions.each do |direction|
-      result + grow_unblocked_moves_in_dir(start_pos, dirction[0][0], direction[0][1])
+      result + grow_unblocked_moves_in_dir(start_pos, direction[0][0], direction[0][1])
     end
     result
   end
